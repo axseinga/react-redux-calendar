@@ -1,12 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import CalendarList from "./CalendarList";
 import CalendarForm from "./CalendarForm";
-import { connect } from "react-redux";
+/*import { connect } from "react-redux";*/
+import { useSelector, useDispatch } from "react-redux";
 import { loadMeetingsAction, saveMeetingAction } from "../actions/calendar";
-import meetingsAPI from "../providers/calendarProvider";
+import { loadAPI, sendAPI } from "../providers/calendarProvider";
 
-class Calendar extends React.Component {
+const Calendar = (props) => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(loadAPI());
+    }, []);
+
+    const meetings = useSelector((state) => state.meetings);
+
+    return (
+        <section>
+            <CalendarList meetings={meetings} />
+            <CalendarForm saveMeeting={sendAPI} />
+        </section>
+    );
+};
+
+export default Calendar;
+
+/*class Calendar extends React.Component {
     meetingsAPI = new meetingsAPI(
         this.props.loadMeetings,
         this.props.saveMeeting
@@ -37,4 +57,4 @@ const mapActionToProps = {
     saveMeeting: saveMeetingAction,
 };
 
-export default connect(mapStateToProps, mapActionToProps)(Calendar);
+export default connect(mapStateToProps, mapActionToProps)(Calendar);*/
