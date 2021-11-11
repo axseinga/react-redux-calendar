@@ -1,6 +1,7 @@
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
 import calendarReducer from "./reducers/calendarReducer";
 
-const store = createStore(calendarReducer);
+const store = createStore(calendarReducer, composeWithDevTools());
 
 export default store;
