@@ -4,7 +4,7 @@ import CalendarList from "./CalendarList";
 import CalendarForm from "./CalendarForm";
 /*import { connect } from "react-redux";*/
 import { useSelector, useDispatch } from "react-redux";
-import { loadMeetingsAction, saveMeetingAction } from "../actions/calendar";
+/*import { loadMeetingsAction, saveMeetingAction } from "../actions/calendar";*/
 import { loadAPI, sendAPI } from "../providers/calendarProvider";
 
 const Calendar = (props) => {
