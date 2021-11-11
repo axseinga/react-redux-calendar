@@ -1,6 +1,6 @@
 import { createStore } from "redux";
-import meetingsReducer from "./reducers/meetingsReducer";
+import calendarReducer from "./reducers/calendarReducer";
 
-const store = createStore(meetingsReducer);
+const store = createStore(calendarReducer);
 
 export default store;
