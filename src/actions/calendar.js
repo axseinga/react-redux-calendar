@@ -1,11 +1,11 @@
-export const loadMeetingsAction = async (meetings) => {
+export const loadMeetingsAction = (meetings) => {
     return {
         type: "loadMeetings",
         payload: { meetings },
     };
 };
 
-export const saveMeetingAction = async (newMeeting) => {
+export const saveMeetingAction = (newMeeting) => {
     return {
         type: "saveMeeting",
         payload: { newMeeting },

@@ -13,6 +13,7 @@ export const loadAPI = () => {
                 throw new Error("Network error!");
             })
             .then((resp) => {
+                console.log(resp);
                 dispatch(loadMeetingsAction(resp));
             })
             .catch((err) => {
@@ -38,6 +39,7 @@ export const sendAPI = (meetingData) => {
                 throw new Error("Network error!");
             })
             .then((meetingData) => {
+                console.log(meetingData);
                 dispatch(saveMeetingAction(meetingData));
             })
             .catch((err) => {
