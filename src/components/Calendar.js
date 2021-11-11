@@ -19,7 +19,7 @@ const Calendar = (props) => {
     return (
         <section>
             <CalendarList meetings={meetings} />
-            <CalendarForm saveMeeting={dispatch(sendAPI)} />
+            <CalendarForm /*saveMeeting={dispatch(sendAPI)}*/ />
         </section>
     );
 };

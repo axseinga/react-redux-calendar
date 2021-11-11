@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { sendAPI } from "../providers/calendarProvider";
 
 const CalendarForm = (props) => {
     const initForm = {
@@ -11,6 +13,8 @@ const CalendarForm = (props) => {
     };
     const [form, setForm] = useState(initForm);
 
+    const dispatch = useDispatch();
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -18,7 +22,7 @@ const CalendarForm = (props) => {
         setForm({ ...form, errors: errors });
 
         if (errors.length === 0) {
-            saveMeeting();
+            dispatch(sendAPI(form));
             clearFormFields();
         }
     };
