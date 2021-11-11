@@ -4,8 +4,8 @@ import { sendAPI } from "../providers/calendarProvider";
 
 const CalendarForm = (props) => {
     const initForm = {
-        firstName: "",
-        lastName: "",
+        name: "",
+        surname: "",
         email: "",
         date: "",
         time: "",
