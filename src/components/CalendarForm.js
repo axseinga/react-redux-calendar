@@ -121,63 +121,34 @@ const CalendarForm = (props) => {
         }
     };
 
+    const fields = [
+        { name: "date", placeholder: "YYYY-MM-DD" },
+        { name: "time", placeholder: "HH:MM" },
+        { name: "name", placeholder: "" },
+        { name: "surname", placeholder: "" },
+        { name: "email", placeholder: "name@mail.to" },
+    ];
+
+    const capitalize = (str) => {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    };
+
     return (
         <form action="" onSubmit={handleSubmit}>
             <ul>{renderErrors()}</ul>
-            <div>
-                <label>
-                    Data:{" "}
-                    <input
-                        name="date"
-                        onChange={handleFieldChange}
-                        value={form.date}
-                        placeholder="RRRR-MM-DD"
-                    />
-                </label>
-            </div>
-            <div>
-                <label>
-                    Godzina:{" "}
-                    <input
-                        name="time"
-                        onChange={handleFieldChange}
-                        value={form.time}
-                        placeholder="HH:MM"
-                    />
-                </label>
-            </div>
-
-            <div>
-                <label>
-                    Imię:{" "}
-                    <input
-                        name="firstName"
-                        onChange={handleFieldChange}
-                        value={form.firstName}
-                    />
-                </label>
-            </div>
-            <div>
-                <label>
-                    Nazwisko:{" "}
-                    <input
-                        name="lastName"
-                        onChange={handleFieldChange}
-                        value={form.lastName}
-                    />
-                </label>
-            </div>
-            <div>
-                <label>
-                    Email:{" "}
-                    <input
-                        name="email"
-                        onChange={handleFieldChange}
-                        value={form.email}
-                        placeholder="nazwa@poczty.pl"
-                    />
-                </label>
-            </div>
+            {fields.map((field) => (
+                <div>
+                    <label>
+                        {capitalize(field.name)}
+                        <input
+                            name={field.name}
+                            onChange={handleFieldChange}
+                            value={form[field.name]}
+                            placeholder={field.placeholder}
+                        />
+                    </label>
+                </div>
+            ))}
             <div>
                 <input type="submit" value="zapisz" />
             </div>
