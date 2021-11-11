@@ -8,10 +8,6 @@ import { loadMeetingsAction, saveMeetingAction } from "../actions/calendar";
 class Calendar extends React.Component {
     apiUrl = "http://localhost:3005/meetings";
 
-    state = {
-        meetings: [],
-    };
-
     loadMeetingsFromApi() {
         fetch(this.apiUrl)
             .then((resp) => {
@@ -22,9 +18,7 @@ class Calendar extends React.Component {
                 throw new Error("Network error!");
             })
             .then((resp) => {
-                this.setState({
-                    meetings: resp,
-                });
+                this.props.loadMeetings(resp);
             })
             .catch((err) => {
                 console.error(err);
@@ -47,18 +41,12 @@ class Calendar extends React.Component {
                 throw new Error("Network error!");
             })
             .then((meetingData) => {
-                this.addMeetingToState(meetingData);
+                this.props.saveMeeting(meetingData);
             })
             .catch((err) => {
                 console.log(err);
             });
     };
-
-    addMeetingToState(meetingData) {
-        this.setState({
-            meetings: [...this.state.meetings, meetingData],
-        });
-    }
 
     componentDidMount() {
         this.loadMeetingsFromApi();
@@ -67,7 +55,7 @@ class Calendar extends React.Component {
     render() {
         return (
             <section>
-                <CalendarList meetings={this.state.meetings} />
+                <CalendarList meetings={this.props.meetings} />
                 <CalendarForm saveMeeting={this.sendMeetingToApi} />
             </section>
         );
