@@ -1,6 +1,29 @@
-import React from 'react';
+import React from "react";
 
-class CalendarList extends React.Component {   
+const CalendarList = (props) => {
+    const { meetings } = props;
+
+    const renderMeetingsList = () => {
+        return meetings.map((item) => renderMeetingsItem(item));
+    };
+
+    const renderMeetingsItem = (itemData) => {
+        return (
+            <li key={itemData.id}>
+                {itemData.date} {itemData.time} =>
+                <a href={`mailto: ${itemData.email}`}>
+                    {itemData.firstName} {itemData.lastName}
+                </a>
+            </li>
+        );
+    };
+
+    return <ul>{renderMeetingsList()}</ul>;
+};
+
+export default CalendarList;
+
+/*class CalendarList extends React.Component {   
     render() {
         return <ul>{ this.renderMeetingsList() }</ul>
     }
@@ -23,4 +46,4 @@ class CalendarList extends React.Component {
     }
 }
 
-export default CalendarList
+export default CalendarList*/
