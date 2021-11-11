@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { sendAPI } from "../providers/calendarProvider";
+import StyledCalendarForm from "./styled/CalendarForm.styled";
 
 const CalendarForm = (props) => {
     const initForm = {
@@ -22,7 +23,8 @@ const CalendarForm = (props) => {
         setForm({ ...form, errors: errors });
 
         if (errors.length === 0) {
-            dispatch(sendAPI(form));
+            const data = getFieldsData();
+            dispatch(sendAPI(data));
             clearFormFields();
         }
     };
@@ -31,23 +33,23 @@ const CalendarForm = (props) => {
         const errors = [];
 
         if (!isDateCorrect()) {
-            errors.push("Popraw wprowadzoną datę");
+            errors.push("Please write correct date");
         }
 
         if (!isTimeCorrect()) {
-            errors.push("Popraw wprowadzoną godiznę");
+            errors.push("Please write correct time");
         }
 
         if (!isFirstNameCorrect()) {
-            errors.push("Wprowadź imię");
+            errors.push("Add name");
         }
 
         if (!isLastNameCorrect()) {
-            errors.push("Wprowadż nazwisko");
+            errors.push("Add surname");
         }
 
         if (!isEmailCorrect()) {
-            errors.push("Wprowadź poprawny adres email");
+            errors.push("Please write correct email");
         }
 
         return errors;
@@ -66,11 +68,11 @@ const CalendarForm = (props) => {
     };
 
     const isFirstNameCorrect = () => {
-        return form.firstName.length > 0;
+        return form.name.length > 0;
     };
 
     const isLastNameCorrect = () => {
-        return form.lastName.length > 0;
+        return form.surname.length > 0;
     };
 
     const isEmailCorrect = () => {
@@ -82,14 +84,6 @@ const CalendarForm = (props) => {
     const handleFieldChange = (e) => {
         if (isFieldNameCorrect(e.target.name)) {
             setForm({ ...form, [e.target.name]: e.target.value });
-        }
-    };
-
-    const saveMeeting = () => {
-        const { saveMeeting } = props;
-
-        if (typeof saveMeeting === "function") {
-            saveMeeting(getFieldsData());
         }
     };
 
@@ -105,6 +99,7 @@ const CalendarForm = (props) => {
     const getFieldsData = () => {
         const fieldsData = Object.assign({}, form);
         delete fieldsData["errors"];
+        console.log(fieldsData);
 
         return fieldsData;
     };
@@ -134,25 +129,27 @@ const CalendarForm = (props) => {
     };
 
     return (
-        <form action="" onSubmit={handleSubmit}>
-            <ul>{renderErrors()}</ul>
-            {fields.map((field) => (
+        <StyledCalendarForm>
+            <form action="" onSubmit={handleSubmit}>
+                <ul>{renderErrors()}</ul>
+                {fields.map((field) => (
+                    <div>
+                        <label>
+                            {capitalize(field.name)}
+                            <input
+                                name={field.name}
+                                onChange={handleFieldChange}
+                                value={form[field.name]}
+                                placeholder={field.placeholder}
+                            />
+                        </label>
+                    </div>
+                ))}
                 <div>
-                    <label>
-                        {capitalize(field.name)}
-                        <input
-                            name={field.name}
-                            onChange={handleFieldChange}
-                            value={form[field.name]}
-                            placeholder={field.placeholder}
-                        />
-                    </label>
+                    <input type="submit" value="zapisz" />
                 </div>
-            ))}
-            <div>
-                <input type="submit" value="zapisz" />
-            </div>
-        </form>
+            </form>
+        </StyledCalendarForm>
     );
 };
 

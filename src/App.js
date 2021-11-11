@@ -1,10 +1,15 @@
-import React from 'react';
-
-import Calendar from './components/Calendar';
+import React from "react";
+import GlobalStyle from "./GlobalStyle";
+import Calendar from "./components/Calendar";
 
 class App extends React.Component {
     render() {
-        return <Calendar />
+        return (
+            <>
+                <GlobalStyle />
+                <Calendar />
+            </>
+        );
     }
 }
 

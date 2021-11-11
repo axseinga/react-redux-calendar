@@ -1,4 +1,5 @@
 import React from "react";
+import StyledCalendarList from "./styled/CalendarList.styled";
 
 const CalendarList = (props) => {
     const { meetings } = props;
@@ -12,13 +13,17 @@ const CalendarList = (props) => {
             <li key={itemData.id}>
                 {itemData.date} {itemData.time} =>
                 <a href={`mailto: ${itemData.email}`}>
-                    {itemData.firstName} {itemData.lastName}
+                    {itemData.name} {itemData.surname}
                 </a>
             </li>
         );
     };
 
-    return <ul>{renderMeetingsList()}</ul>;
+    return (
+        <StyledCalendarList>
+            <ul>{renderMeetingsList()}</ul>
+        </StyledCalendarList>
+    );
 };
 
 export default CalendarList;
