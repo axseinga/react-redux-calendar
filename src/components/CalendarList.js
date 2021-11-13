@@ -15,6 +15,10 @@ const CalendarList = (props) => {
                 <a href={`mailto: ${itemData.email}`}>
                     {itemData.name} {itemData.surname}
                 </a>
+                <div>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </div>
             </li>
         );
     };
