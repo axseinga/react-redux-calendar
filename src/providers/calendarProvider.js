@@ -45,3 +45,49 @@ export const sendAPI = (meetingData) => {
             });
     };
 };
+
+export const updateAPI = (meetingData) => {
+    return function thunk(dispatch, getState) {
+        return fetch(apiUrl, {
+            method: "PUT",
+            body: JSON.stringify(meetingData),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((resp) => {
+                if (resp.ok) {
+                    return resp.json();
+                }
+
+                throw new Error("Network error!");
+            })
+            .then((meetingData) => {
+                //action for updating dispatch(saveMeetingAction(meetingData)); //
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+};
+
+export const deleteAPI = (id) => {
+    return function thunk(dispatch, getState) {
+        return fetch(apiUrl, {
+            method: "DELETE",
+        })
+            .then((resp) => {
+                if (resp.ok) {
+                    return resp.json();
+                }
+
+                throw new Error("Network error!");
+            })
+            .then((id) => {
+                //action for deleting dispatch(saveMeetingAction(meetingData)); //
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+};

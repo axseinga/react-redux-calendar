@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledCalendar = styled.section`
-    width: 50vw;
+    width: 60vw;
     min-height: 700px;
     height: 80vh;
     background-color: #eaecf0;

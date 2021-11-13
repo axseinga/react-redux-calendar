@@ -133,7 +133,7 @@ const CalendarForm = (props) => {
             <form action="" onSubmit={handleSubmit}>
                 <ul>{renderErrors()}</ul>
                 {fields.map((field) => (
-                    <div>
+                    <div key={field.name}>
                         <label>
                             {capitalize(field.name)}
                             <input

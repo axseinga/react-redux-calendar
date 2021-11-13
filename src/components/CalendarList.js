@@ -1,5 +1,6 @@
 import React from "react";
 import StyledCalendarList from "./styled/CalendarList.styled";
+import CalendarListItem from "./CalendarListItem";
 
 const CalendarList = (props) => {
     const { meetings } = props;
@@ -10,16 +11,17 @@ const CalendarList = (props) => {
 
     const renderMeetingsItem = (itemData) => {
         return (
-            <li key={itemData.id}>
-                {itemData.date} {itemData.time} =>
-                <a href={`mailto: ${itemData.email}`}>
-                    {itemData.name} {itemData.surname}
-                </a>
-                <div>
-                    <button>Edit</button>
-                    <button>Delete</button>
-                </div>
-            </li>
+            <CalendarListItem itemData={itemData} key={itemData.id} />
+            /*<li key={itemData.id}>
+                    {itemData.date} {itemData.time} =>
+                    <a href={`mailto: ${itemData.email}`}>
+                        {itemData.name} {itemData.surname}
+                    </a>
+                    <div>
+                        <button onClick={toggle}>Edit</button>
+                        <button>Delete</button>
+                    </div>
+                </li>*/
         );
     };
 

@@ -12,13 +12,19 @@ const StyledCalendarList = styled.div`
         list-style: none;
         padding-inline-start: 0;
 
-        & li {
+        /* & li {
             padding: 1rem;
             margin: 0.5rem 1rem;
             border-radius: 10px;
             color: #3a4456;
             background: linear-gradient(315deg, #a6b8da, #c5daff);
             box-shadow: inset -5px -5px 15px #8391ac, inset 5px 5px 15px #edffff;
+
+            & > div {
+                display: flex;
+                justify-content: space-between;
+                background-color: yellow;
+            }
 
             & a {
                 margin-left: 0.5rem;
@@ -54,7 +60,7 @@ const StyledCalendarList = styled.div`
                     }
                 }
             }
-        }
+        }*/
     }
 `;
 
