@@ -99,7 +99,6 @@ const CalendarForm = (props) => {
     const getFieldsData = () => {
         const fieldsData = Object.assign({}, form);
         delete fieldsData["errors"];
-        console.log(fieldsData);
 
         return fieldsData;
     };

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const StyledCalendarListItem = styled.li`
+    height: 50px;
     padding: 1rem;
     margin: 0.5rem 1rem;
     border-radius: 10px;

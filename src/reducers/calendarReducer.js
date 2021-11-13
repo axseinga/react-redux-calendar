@@ -13,6 +13,11 @@ const calendarReducer = (state = initState, action) => {
                 ...state,
                 meetings: [...state.meetings, action.payload.newMeeting],
             };
+        case "deleteMeeting":
+            const { meetings, id } = action.payload;
+            return {
+                meetings: meetings.filter((meeting) => meeting.id !== id),
+            };
         default:
             return state;
     }

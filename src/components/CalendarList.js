@@ -11,7 +11,11 @@ const CalendarList = (props) => {
 
     const renderMeetingsItem = (itemData) => {
         return (
-            <CalendarListItem itemData={itemData} key={itemData.id} />
+            <CalendarListItem
+                meetings={meetings}
+                itemData={itemData}
+                key={itemData.id}
+            />
             /*<li key={itemData.id}>
                     {itemData.date} {itemData.time} =>
                     <a href={`mailto: ${itemData.email}`}>

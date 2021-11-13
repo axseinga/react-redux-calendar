@@ -11,3 +11,11 @@ export const saveMeetingAction = (newMeeting) => {
         payload: { newMeeting },
     };
 };
+
+export const deleteMeetingAction = (meetings, id) => {
+    console.log(meetings, id);
+    return {
+        type: "deleteMeeting",
+        payload: { meetings, id },
+    };
+};

@@ -7,34 +7,6 @@
       "email": "jan@kowalski.not",
       "date": "2022-01-01",
       "time": "10:00"
-    },
-    {
-      "name": "Kamila",
-      "surname": "Nawrocka",
-      "email": "kama@gmail.com",
-      "date": "2021-10-18",
-      "time": "12:30",
-      "errors": [],
-      "id": 2
-    },
-    {
-      "name": "Andrzej",
-      "surname": "Wieczorek",
-      "email": "andrew@gmail.com",
-      "date": "2021-10-12",
-      "time": "09:30",
-      "errors": [
-        "Popraw wprowadzoną godiznę"
-      ],
-      "id": 3
-    },
-    {
-      "name": "Aleksandra",
-      "surname": "Wintu",
-      "email": "wintu@gmail.com",
-      "date": "2021-08-15",
-      "time": "20:30",
-      "id": 4
     }
   ]
 }

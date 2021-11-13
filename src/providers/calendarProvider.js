@@ -1,4 +1,8 @@
-import { loadMeetingsAction, saveMeetingAction } from "../actions/calendar";
+import {
+    loadMeetingsAction,
+    saveMeetingAction,
+    deleteMeetingAction,
+} from "../actions/calendar";
 
 const apiUrl = "http://localhost:3005/meetings";
 
@@ -46,7 +50,7 @@ export const sendAPI = (meetingData) => {
     };
 };
 
-export const updateAPI = (meetingData) => {
+/*export const updateAPI = (meetingData) => {
     return function thunk(dispatch, getState) {
         return fetch(apiUrl, {
             method: "PUT",
@@ -69,11 +73,11 @@ export const updateAPI = (meetingData) => {
                 console.log(err);
             });
     };
-};
+};*/
 
-export const deleteAPI = (id) => {
+export const deleteAPI = (meetings, id) => {
     return function thunk(dispatch, getState) {
-        return fetch(apiUrl, {
+        return fetch(`${apiUrl}/${id}`, {
             method: "DELETE",
         })
             .then((resp) => {
@@ -83,8 +87,8 @@ export const deleteAPI = (id) => {
 
                 throw new Error("Network error!");
             })
-            .then((id) => {
-                //action for deleting dispatch(saveMeetingAction(meetingData)); //
+            .then((resp) => {
+                dispatch(deleteMeetingAction(meetings, id)); //
             })
             .catch((err) => {
                 console.log(err);
