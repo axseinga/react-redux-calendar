@@ -8,16 +8,23 @@ const CalendarListItem = (props) => {
     const [isEditing, toggle] = useToggleState();
     const dispatch = useDispatch();
     return (
-        <StyledCalendarListItem>
+        <StyledCalendarListItem isEditing={isEditing}>
             <div>
                 <div>
-                    {props.itemData.date} {props.itemData.time} =>
+                    {props.itemData.date} {props.itemData.time} =
                     <a href={`mailto: ${props.itemData.email}`}>
                         {props.itemData.name} {props.itemData.surname}
                     </a>
                 </div>
                 <div>
-                    <button onClick={toggle}>Edit</button>
+                    <button
+                        onClick={() => {
+                            toggle();
+                            props.getId(props.itemData.id);
+                        }}
+                    >
+                        Edit
+                    </button>
                     <button
                         onClick={() =>
                             dispatch(

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import CalendarList from "./CalendarList";
 import CalendarForm from "./CalendarForm";
@@ -16,12 +16,24 @@ const Calendar = (props) => {
 
     const meetings = useSelector((state) => state.meetings);
 
+    const [meetingToUpdate, setMeetingToUpdate] = useState({});
+    const [isEditing, setIsEditing] = useState(false);
+
+    const getMeetingToUpdate = (id) => {
+        const meeting = meetings.filter((meeting) => meeting.id === id);
+        setMeetingToUpdate(meeting);
+        setIsEditing(true);
+    };
+
     return (
         <StyledCalendar>
             <h1>Calendar</h1>
             <div>
-                <CalendarList meetings={meetings} />
-                <CalendarForm />
+                <CalendarList meetings={meetings} getId={getMeetingToUpdate} />
+                <CalendarForm
+                    meetingToUpdate={meetingToUpdate}
+                    isEditing={isEditing}
+                />
             </div>
         </StyledCalendar>
     );

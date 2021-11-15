@@ -13,6 +13,7 @@ const CalendarList = (props) => {
         return (
             <CalendarListItem
                 meetings={meetings}
+                getId={props.getId}
                 itemData={itemData}
                 key={itemData.id}
             />

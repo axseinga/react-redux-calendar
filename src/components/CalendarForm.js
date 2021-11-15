@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { sendAPI } from "../providers/calendarProvider";
 import StyledCalendarForm from "./styled/CalendarForm.styled";
 
 const CalendarForm = (props) => {
+    console.log(props.meetingToUpdate[0]);
     const initForm = {
         name: "",
         surname: "",
@@ -12,7 +13,27 @@ const CalendarForm = (props) => {
         time: "",
         errors: [],
     };
+
+    const getEditForm = () => {
+        const editForm = {
+            name: props.meetingToUpdate[0].name,
+            surname: props.meetingToUpdate[0].surname,
+            email: props.meetingToUpdate[0].email,
+            date: props.meetingToUpdate[0].date,
+            time: props.meetingToUpdate[0].time,
+            errors: [],
+        };
+        return editForm;
+    };
+
     const [form, setForm] = useState(initForm);
+
+    useEffect(() => {
+        if (props.meetingToUpdate[0] !== undefined) {
+            const editForm = getEditForm();
+            setForm(editForm);
+        }
+    }, [props.isEditing]);
 
     const dispatch = useDispatch();
 
