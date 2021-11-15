@@ -18,7 +18,7 @@
 
 ### The challenge
 
-The challenge was to re-write an application with React state management to Redux pattern and to style it with styled components.
+The challenge was to re-write an application with React state management to Redux pattern and to style it with styled-components.
 
 ### Screenshot
 
@@ -35,7 +35,7 @@ Localhost port: `http://localhost:3005/meetings`
 
 ## My process
 
-On the beginning I created the Store in `store.js`, simple Reducer in `calendarReducer.js` and Provider in my `index.js` to pass store to other components. I had to check what actions `Calendar.js` is covering and created two actions based on that knowledge: `loadMeetingsAction` and `saveMeetingAction` in `actions/calendar.js`. Next step was to modified Reducer to serve those actions. Because the app was written in class components I connected React with Redux by mapping state and action to props (mapStateToProps and mapActionToProps). When I finished and Redux state management was working correctly I decided to re-write class components to functional components and use React Hooks. I moved API calls into separate file (`providers/calendarProvider.js`) and use thunk middleware to make API calls work with Redux and handle the dispatching. In the end I decided to add `edit` and `delete` buttons as extra feature to my project.
+In the beginning, I created the Store in `store.js`, simple Reducer in `calendarReducer.js`, and Provider in my `index.js` to pass store to other components. I had to check what actions `Calendar.js` is covering and created two actions based on that knowledge: `loadMeetingsAction` and `saveMeetingAction` in `actions/calendar.js`. The next step was to modify Reducer to serve those actions. Because the app was written in class components I connected React with Redux by mapping state and action to props (mapStateToProps and mapActionToProps). When I finished and Redux state management was working correctly I decided to re-write class components to functional components and use React Hooks. I moved API calls into a separate file (`providers/calendarProvider.js`) and use thunk middleware to make API calls work with Redux and handle the dispatching. In the end, I decided to add `edit` and `delete` buttons as an extra feature to my project.
 
 ### Built with
 
@@ -49,7 +49,7 @@ On the beginning I created the Store in `store.js`, simple Reducer in `calendarR
 
 ### What I learned
 
-By doing this challenge I learned how to use React Redux, especially how to create actions and dispatch them. I learned how to approch class and functional components with Redux pattern and how to use thunk middleware. I had a chance to work more with React Hooks and to style my components with Styled Components technique.
+By doing this challenge I learned how to use React-Redux, especially how to create actions and dispatch them. I learned how to approach class and functional components with Redux pattern and how to use thunk middleware. I had a chance to work more with React Hooks and to style my components with the styled-components technique.
 
 ### Continued development
 
