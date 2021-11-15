@@ -22,7 +22,7 @@ The challenge was to re-write an application with React state management to Redu
 
 ### Screenshot
 
-![](./Screenshot.png)
+![](./screenshot.png)
 
 ### How to open project
 
