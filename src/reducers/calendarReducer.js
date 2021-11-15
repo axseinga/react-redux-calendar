@@ -18,6 +18,18 @@ const calendarReducer = (state = initState, action) => {
             return {
                 meetings: meetings.filter((meeting) => meeting.id !== id),
             };
+        case "updateMeeting":
+            const swapId = action.payload.updatedMeeting.id;
+            const toDelete = state.meetings.findIndex(
+                (meeting) => meeting.id === swapId
+            );
+            const newState = state.meetings.filter(
+                (meeting) => meeting.id !== swapId
+            );
+            newState.push(action.payload.updatedMeeting);
+            return {
+                meetings: newState,
+            };
         default:
             return state;
     }

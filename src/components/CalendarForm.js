@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { sendAPI } from "../providers/calendarProvider";
+import { sendAPI, updateAPI } from "../providers/calendarProvider";
 import StyledCalendarForm from "./styled/CalendarForm.styled";
 
 const CalendarForm = (props) => {
-    console.log(props.meetingToUpdate[0]);
     const initForm = {
         name: "",
         surname: "",
@@ -15,13 +14,16 @@ const CalendarForm = (props) => {
     };
 
     const getEditForm = () => {
+        const { name, surname, email, date, time, id } =
+            props.meetingToUpdate[0];
         const editForm = {
-            name: props.meetingToUpdate[0].name,
-            surname: props.meetingToUpdate[0].surname,
-            email: props.meetingToUpdate[0].email,
-            date: props.meetingToUpdate[0].date,
-            time: props.meetingToUpdate[0].time,
+            name: name,
+            surname: surname,
+            email: email,
+            date: date,
+            time: time,
             errors: [],
+            id: id,
         };
         return editForm;
     };
@@ -46,6 +48,20 @@ const CalendarForm = (props) => {
         if (errors.length === 0) {
             const data = getFieldsData();
             dispatch(sendAPI(data));
+            clearFormFields();
+        }
+    };
+
+    const handleSave = (e) => {
+        e.preventDefault();
+
+        const errors = validateForm();
+        setForm({ ...form, errors: errors });
+
+        if (errors.length === 0) {
+            const data = getFieldsData();
+            const id = form.id;
+            dispatch(updateAPI(data, id));
             clearFormFields();
         }
     };
@@ -150,7 +166,7 @@ const CalendarForm = (props) => {
 
     return (
         <StyledCalendarForm>
-            <form action="" onSubmit={handleSubmit}>
+            <form action="">
                 <ul>{renderErrors()}</ul>
                 {fields.map((field) => (
                     <div key={field.name}>
@@ -166,7 +182,19 @@ const CalendarForm = (props) => {
                     </div>
                 ))}
                 <div>
-                    <input type="submit" value="zapisz" />
+                    {props.isEditing ? (
+                        <input
+                            type="submit"
+                            onClick={handleSave}
+                            value="save"
+                        />
+                    ) : (
+                        <input
+                            type="submit"
+                            onClick={handleSubmit}
+                            value="add"
+                        />
+                    )}
                 </div>
             </form>
         </StyledCalendarForm>
