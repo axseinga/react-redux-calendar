@@ -17,21 +17,11 @@ const CalendarList = (props) => {
                 itemData={itemData}
                 key={itemData.id}
             />
-            /*<li key={itemData.id}>
-                    {itemData.date} {itemData.time} =>
-                    <a href={`mailto: ${itemData.email}`}>
-                        {itemData.name} {itemData.surname}
-                    </a>
-                    <div>
-                        <button onClick={toggle}>Edit</button>
-                        <button>Delete</button>
-                    </div>
-                </li>*/
         );
     };
 
     return (
-        <StyledCalendarList>
+        <StyledCalendarList isEditing={props.isEditing}>
             <ul>{renderMeetingsList()}</ul>
         </StyledCalendarList>
     );

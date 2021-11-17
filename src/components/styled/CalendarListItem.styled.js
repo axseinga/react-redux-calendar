@@ -1,11 +1,5 @@
 import styled, { css } from "styled-components";
 
-const deactiveLiStyle = css`
-    pointer-events: none;
-    opacity: 0.6;
-    filter: alpha(opacity=50);
-`;
-
 const StyledCalendarListItem = styled.li`
     height: 50px;
     padding: 1rem;
@@ -54,7 +48,6 @@ const StyledCalendarListItem = styled.li`
             }
         }
     }
-    ${(props) => props.isEditing && deactiveLiStyle}
 `;
 
 export default StyledCalendarListItem;

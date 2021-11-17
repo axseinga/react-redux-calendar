@@ -4,7 +4,6 @@ import CalendarList from "./CalendarList";
 import CalendarForm from "./CalendarForm";
 import { useSelector, useDispatch } from "react-redux";
 import { loadAPI } from "../providers/calendarProvider";
-
 import StyledCalendar from "./styled/Calendar.styled";
 
 const Calendar = (props) => {
@@ -15,6 +14,7 @@ const Calendar = (props) => {
     }, []);
 
     const meetings = useSelector((state) => state.meetings);
+    console.log(meetings);
 
     const [meetingToUpdate, setMeetingToUpdate] = useState({});
     const [isEditing, setIsEditing] = useState(false);
@@ -29,10 +29,15 @@ const Calendar = (props) => {
         <StyledCalendar>
             <h1>Calendar</h1>
             <div>
-                <CalendarList meetings={meetings} getId={getMeetingToUpdate} />
+                <CalendarList
+                    meetings={meetings}
+                    getId={getMeetingToUpdate}
+                    isEditing={isEditing}
+                />
                 <CalendarForm
                     meetingToUpdate={meetingToUpdate}
                     isEditing={isEditing}
+                    setIsEditing={setIsEditing}
                 />
             </div>
         </StyledCalendar>

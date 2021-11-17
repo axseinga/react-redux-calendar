@@ -62,6 +62,7 @@ const CalendarForm = (props) => {
             const data = getFieldsData();
             const id = form.id;
             dispatch(updateAPI(data, id));
+            props.setIsEditing(false);
             clearFormFields();
         }
     };

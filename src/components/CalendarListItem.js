@@ -1,14 +1,12 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import useToggleState from "../hooks/useToggleState";
 import { deleteAPI } from "../providers/calendarProvider";
 import StyledCalendarListItem from "./styled/CalendarListItem.styled";
 
 const CalendarListItem = (props) => {
-    const [isEditing, toggle] = useToggleState();
     const dispatch = useDispatch();
     return (
-        <StyledCalendarListItem isEditing={isEditing}>
+        <StyledCalendarListItem>
             <div>
                 <div>
                     {props.itemData.date} {props.itemData.time} =>
@@ -19,7 +17,6 @@ const CalendarListItem = (props) => {
                 <div>
                     <button
                         onClick={() => {
-                            toggle();
                             props.getId(props.itemData.id);
                         }}
                     >

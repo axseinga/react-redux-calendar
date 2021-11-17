@@ -24,6 +24,7 @@ const calendarReducer = (state = initState, action) => {
                 (meeting) => meeting.id !== swapId
             );
             newState.push(action.payload.updatedMeeting);
+            newState.sort((a, b) => a.id - b.id);
             return {
                 meetings: newState,
             };

@@ -28,7 +28,7 @@ The challenge was to re-write an application with React state management to Redu
 
 1. Clone git repository and open file on your local device in Code editor.
 2. Run `npm install` command to install all npm packages.
-3. Run `json-server --watch ./db/data.json --port 300` command to run local API.
+3. Run `json-server --watch ./db/data.json --port 3005` command to run local API.
 4. Run `npm start` command to open developer mode.
 
 Localhost port: `http://localhost:3005/meetings`
